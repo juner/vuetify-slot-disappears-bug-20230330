@@ -1,32 +1,37 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { reactive, ref } from 'vue';
+
+const data = (() => {
+  const value = ref("hello");
+  const icon = ref("♪");
+  return reactive({
+    value,
+    icon,
+  });
+})();
+function hello(){
+  alert("hello");
+}
+function clear(){
+  Object.assign(data,{value:"cleared."});
+}
 </script>
 
 <template>
   <v-app>
     <v-main>
-      <a href="https://vitejs.dev" target="_blank">
-        <img src="/vite.svg" class="logo" alt="Vite logo" />
-      </a>
-      <a href="https://vuejs.org/" target="_blank">
-        <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-      </a>
-      <HelloWorld msg="Vite + Vue" />
+      <v-text-field outlined v-model="data.value">
+        <template #append>
+          <v-btn @click="hello" icon color="primary">
+            {{ data.icon }}
+          </v-btn>
+        </template>
+      </v-text-field><br/>
+      <v-btn @click="clear" color="primary">clear</v-btn>
     </v-main>
   </v-app>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+/** no use */
 </style>

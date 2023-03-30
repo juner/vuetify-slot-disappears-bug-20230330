@@ -4,12 +4,10 @@ import App from './App.vue'
 import Vuetify from "vuetify";
 import * as compoents from "vuetify/lib/components";
 import * as directives from "vuetify/lib/directives";
+import "@mdi/font/css/materialdesignicons.css";
 
 Vue.use(Vuetify, {compoents, directives});
 const vuetify = new Vuetify({
-    icons: {
-        iconfont: "mdi",
-    },
     theme: {
         options: {
             customProperties: true,
